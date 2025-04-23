@@ -3,6 +3,7 @@ import yaml
 import SM16relind
 import lib8mosind
 import socket
+import time
 
 SOCKET_PATH = '/tmp/pwm.sock'
 
@@ -30,3 +31,4 @@ while True:
             lib8mosind.set_all(mosfet, OFF)
         for relay in relay_map['relay_addresses']:
             SM16relind.SM16relind(relay).set_all(OFF)
+        time.sleep(1)
