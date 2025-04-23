@@ -1,6 +1,6 @@
 #!/bin/env bash
 sudo apt update && sudo apt upgrade 
-sudo apt install -y git libgpiod-dev 
+sudo apt install -y git libgpiod-dev socat
 sudo nmcli c m "Wired connection 1" ipv4.method link-local
 
 sudo apt install python3-pip 
