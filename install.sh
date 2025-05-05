@@ -30,9 +30,9 @@ git clone https://github.com/SequentMicrosystems/SmartFan-rpi.git
 cd ~/SmartFan-rpi 
 sudo make install 
 
-cd ~/ 
-mv picode/* ~/ 
-rm –rf picode 
-
 sudo raspi-config nonint do_i2c 0
 sudo raspi-config nonint do_spi 0
+
+cd ~/ 
+mv picode/* ~/ 
+rm –rf picode
