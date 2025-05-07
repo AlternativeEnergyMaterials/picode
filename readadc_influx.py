@@ -22,10 +22,14 @@ def push_influx(label:str, metric:str, value:float, time:datetime):
     point = Point('test_measurement').tag('DeviceName',label).field(metric,value).time(time.astimezone())
     WRITE_API.write(BUCKET, record=point)
 
-if __name__ == '__main__':
+def main():
     while True:
         t = datetime.now()
         for address in ADDRESSES:
             values = ADC.getADCall(address)
             for value, channel in zip(values, CHANNELS):
                 push_influx('-'.join([str(address),channel]), 'adc_measurement', value, t)
+
+if __name__ == '__main__':
+    if len(CONFIG['adc_addresses']) > 0:
+        main()

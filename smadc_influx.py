@@ -26,10 +26,14 @@ def push_influx(label:str, metric:str, value:float, time:datetime):
     point = Point('test_measurement').tag('DeviceName',label).field(metric,value).time(time.astimezone())
     WRITE_API.write(BUCKET, record=point)
 
-if __name__ == '__main__':
+def main():
     while True:
         t = datetime.now()
         for addr in CONFIG['smtc_addresses']:
             for i in range(16):
                 voltage = smadcs[addr].get_u_in(i+1)
                 push_influx('-'.join([str(addr),str(i+1)]),'adc_measurement',voltage,t)
+
+if __name__ == '__main__':
+    if len(CONFIG['smadc_addresses']) > 0:
+        main()

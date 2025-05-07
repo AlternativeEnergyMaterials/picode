@@ -22,11 +22,14 @@ def push_influx(label:str, metric:str, value:float, time:datetime):
     point = Point('test_measurement').tag('DeviceName',label).field(metric,value).time(time.astimezone())
     WRITE_API.write(BUCKET, record=point)
 
-if __name__ == '__main__':
+def main():
     while True:
         t = datetime.now()
         for addr in CONFIG['smind_addresses']:
             for i in range(4):
                 measurement = megaind.get4_20In(addr,i+1)
                 push_influx('-'.join([str(addr),str(i+1)]),'Ind_Current',measurement,t)
-        # time.sleep(1)
+
+if __name__ == '__main__':
+    if len(CONFIG['smind_addresses']) > 0:
+        main()
