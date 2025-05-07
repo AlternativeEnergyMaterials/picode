@@ -1,7 +1,7 @@
 #!/bin/env bash
 sudo apt update && sudo apt upgrade 
 sudo apt install -y git libgpiod-dev socat
-sudo nmcli c m "Wired connection 1" ipv4.method link-local
+sudo nmcli con modify "Wired connection 1" ipv4.method manual ipv4.addresses 192.168.7.2/24
 
 sudo apt install python3-pip 
 pip install pi-plates --break-system-packages
