@@ -19,7 +19,7 @@ BUCKET = 'test_data'
 CHANNELS = ['S0','S1','S2','S3','S4','S5','S6','S7','D0','D1','D2','D3','I0','I1','I2','I3']
 
 def push_influx(label:str, metric:str, value:float, time:datetime):
-    point = Point('test_measurement').tag('DeviceName',label).field(metric,value).time(time.astimezone())
+    point = Point('test_measurement').tag('DeviceName',label).field(metric,value)#.time(time.astimezone())
     WRITE_API.write(BUCKET, record=point)
 
 def main():

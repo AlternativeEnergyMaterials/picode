@@ -23,7 +23,7 @@ WRITE_API = INFLUX_CLIENT.write_api(write_options=SYNCHRONOUS)
 BUCKET = 'test_data'
 
 def push_influx(label:str, metric:str, value:float, time:datetime):
-    point = Point('test_measurement').tag('DeviceName',label).field(metric,value).time(time.astimezone())
+    point = Point('test_measurement').tag('DeviceName',label).field(metric,value)#.time(time.astimezone())
     WRITE_API.write(BUCKET, record=point)
 
 def main():
