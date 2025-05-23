@@ -1,5 +1,5 @@
 import os
-import lib16univin
+import SM24b8vin
 import yaml
 from influxdb_client import InfluxDBClient, Point
 from influxdb_client.client.write_api import SYNCHRONOUS
@@ -11,10 +11,10 @@ CONFIG_PATH = os.path.join(os.path.expanduser('~'),'config.yaml')
 with open(CONFIG_PATH) as file:
     CONFIG:dict[int,list[int]] = yaml.safe_load(file)
 
-smadcs:dict[int,lib16univin.SM16univin] = {}
+smadcs:dict[int,SM24b8vin.SM24b8vin] = {}
 
 for addr in CONFIG['smadc_addresses']:
-    smadcs[addr] = lib16univin.SM16univin(addr)
+    smadcs[addr] = SM24b8vin.SM24b8vin(addr)
 
 INFLUX_CLIENT = InfluxDBClient(CONFIG['influx_url'],
                                token=CONFIG['influx_token'],
