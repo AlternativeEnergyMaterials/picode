@@ -34,5 +34,8 @@ sudo raspi-config nonint do_i2c 0
 sudo raspi-config nonint do_spi 0
 
 cd ~/ 
-mv picode/* ~/ 
-rm –rf picode
+cp picode/{*.py,*.sh,*.yaml} ~/
+
+sed -i "s/USER/$(whoami)/g" picode/wd_run.service
+sudo cp picode/wd_run.service /etc/systemd/system/wd_run.service
+sudo systemctl daemon-reload

@@ -29,6 +29,11 @@ smtc_addresses: [0]
 adc_addresses: [0]
 smadc_addresses: [0]
 smind_addresses: [0]
+wdt_cmd: smtc
+wdt_addr: 0
+wdt_p: 5
+wdt_ip: 60
+wdt_op: 5
 influx_url: 'http://192.168.7.1:8086'
 influx_token: '7NuViJKSHIc6vjvZ9I1RCdSKb8qllkVo72SfzxmQClBTNS4STQmtal8xyxdz_LVa57fWWJ30c1OcFR33aq6IDg=='
 influx_org: '880be9804b3351e0'
