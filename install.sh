@@ -1,5 +1,5 @@
 #!/bin/env bash
-sudo apt update && sudo apt upgrade 
+sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y git libgpiod-dev socat
 sudo nmcli con modify "Wired connection 1" ipv4.method manual ipv4.addresses 192.168.7.2/24
 
