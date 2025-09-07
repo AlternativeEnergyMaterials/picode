@@ -35,6 +35,11 @@ git clone https://github.com/SequentMicrosystems/megaind-rpi.git
 cd ~/megaind-rpi
 sudo make install
 
+cd ~/
+git clone https://github.com/SequentMicrosystems/24b8vin-rpi.git
+cd ~/24b8vin-rpi
+sudo make install
+
 sudo raspi-config nonint do_i2c 0
 sudo raspi-config nonint do_spi 0
 
